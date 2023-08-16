@@ -32,6 +32,15 @@ public class User implements UserDetails {
         this.email = email;
         this.password = password;
     }
+  // UserDetails를 상속받아 인증 객체로 사용
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id", updatable = false)
+  private Long id;
+  @Column(name = "email", nullable = false, unique = true)
+  private String email;
+  @Column(name = "password")
+  private String password;
 
     @Override // 권한 반환
     public Collection<? extends GrantedAuthority> getAuthorities() {
