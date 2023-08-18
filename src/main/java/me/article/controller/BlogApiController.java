@@ -1,5 +1,6 @@
 package me.article.controller;
 
+import java.security.Principal;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import me.article.domain.Article;
@@ -45,8 +46,8 @@ public class BlogApiController {
   }
 
   @PostMapping("/api/articles")
-  public ResponseEntity<Article> addArticle(@RequestBody AddArticleRequest request) {
-    Article saveArticle = blogService.save(request);
+  public ResponseEntity<Article> addArticle(@RequestBody AddArticleRequest request, Principal principal) {
+    Article saveArticle = blogService.save(request, principal.getName());
 
     return ResponseEntity.status(HttpStatus.CREATED)
         .body(saveArticle);
