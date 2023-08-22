@@ -43,3 +43,9 @@ bin/
 
 src/main/resources/application.yml
 .idea/dataSources.local.xml
+.idea/dataSources.xml
+.idea/dataSources/64dbfcf7-5df6-42d0-a032-9774779003c4.xml
+
+.idea/dataSources/64dbfcf7-5df6-42d0-a032-9774779003c4/storage_v2/_src_/database/TESTDB.kGhKkw.meta
+.idea/dataSources/64dbfcf7-5df6-42d0-a032-9774779003c4/storage_v2/_src_/database/TESTDB.kGhKkw/schema/INFORMATION_SCHEMA.NBgcMw.meta
+.idea/dataSources/64dbfcf7-5df6-42d0-a032-9774779003c4/storage_v2/_src_/database/TESTDB.kGhKkw/schema/PUBLIC.aaZQjQ.meta
