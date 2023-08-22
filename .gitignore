@@ -41,5 +41,5 @@ bin/
 ### Mac OS ###
 .DS_Store
 
-application.yml
 src/main/resources/application.yml
+.idea/dataSources.local.xml
