@@ -16,7 +16,7 @@ public class CachingConfig {
     public CacheManager cacheManager(){
         ConcurrentMapCacheManager cacheManager = new ConcurrentMapCacheManager();
         cacheManager.setAllowNullValues(false);
-        cacheManager.setCacheNames(List.of("users"));
+        cacheManager.setCacheNames(List.of("article"));
         return cacheManager;
     }
 
