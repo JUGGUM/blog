@@ -53,3 +53,10 @@ src/main/resources/application.yml
 .idea/dataSources/b758519a-b9bd-49b3-a07c-ab23f9a85af7/storage_v2/_src_/database/MYDB.KlckAA.meta
 .idea/dataSources/b758519a-b9bd-49b3-a07c-ab23f9a85af7/storage_v2/_src_/database/MYDB.KlckAA/schema/PUBLIC.aaZQjQ.meta
 .idea/dataSources/b758519a-b9bd-49b3-a07c-ab23f9a85af7/storage_v2/_src_/database/MYDB.KlckAA/schema/INFORMATION_SCHEMA.NBgcMw.meta
+*.xml
+.idea/workspace.xml
+.idea/misc.xml
+.idea/dataSources/9675ebfa-f492-41d5-a21f-2e61c2733ef0/storage_v2/_src_/database/TESTDB.kGhKkw.meta
+.idea/dataSources/9675ebfa-f492-41d5-a21f-2e61c2733ef0/storage_v2/_src_/database/TESTDB.kGhKkw/schema/INFORMATION_SCHEMA.NBgcMw.meta
+.idea/dataSources/9675ebfa-f492-41d5-a21f-2e61c2733ef0/storage_v2/_src_/database/TESTDB.kGhKkw/schema/PUBLIC.aaZQjQ.meta
+.idea/workspace.xml
