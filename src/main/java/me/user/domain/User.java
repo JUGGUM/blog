@@ -17,7 +17,8 @@ import java.util.List;
 @Getter
 @Entity
 public class User implements UserDetails {
-    //UserDetails를 상속받아 인증 객체로 사용
+
+    // UserDetails를 상속받아 인증 객체로 사용
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false)
@@ -27,22 +28,25 @@ public class User implements UserDetails {
     @Column(name = "password")
     private String password;
 
+    // 사용자 이름
+    @Column(name = "nickname", unique = true)
+    private String nickname;
+
     @Builder
-    public User(String email, String password, String auth) {
+    public User(String email, String password, String auth, String nickname) {
         this.email = email;
         this.password = password;
+        this.nickname = nickname;
     }
-  // UserDetails를 상속받아 인증 객체로 사용
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "id", updatable = false)
-  private Long id;
-  @Column(name = "email", nullable = false, unique = true)
-  private String email;
-  @Column(name = "password")
-  private String password;
 
-    @Override // 권한 반환
+    // 사용자 이름 변경
+    public User update(String nickname) {
+        this.nickname = nickname;
+        return this;
+    }
+
+    // 권한 반환
+    @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("user"));
     }
