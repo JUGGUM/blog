@@ -31,6 +31,11 @@ public class BlogService {
 
     public void delete(long id){
         blogRepository.deleteById(id);
+    public void delete(long id) {
+        Article article = blogRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("not found : " +
+                        id));
+        blogRepository.delete(article);
     }
 
     @Transactional // 트랜잭션 메서드 엔티티의 필드값이 바뀌면 중간에 에러가 발생해도 제대로 된 값 수정을 보장
