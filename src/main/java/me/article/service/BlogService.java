@@ -6,31 +6,37 @@ import me.article.domain.Article;
 import me.article.dto.AddArticleRequest;
 import me.article.dto.UpdateArticleRequest;
 import me.article.repository.BlogRepository;
+import me.utils.error.exception.ArticleNotFoundException;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import java.beans.Transient;
 import java.util.List;
 
 @RequiredArgsConstructor //final 이 붙거나 @NotNull 이 붙은 필드의 생성자 추가
 @Service //빈으로 등록
+@EnableAsync // 비동기처리
 public class BlogService {
+
     private final BlogRepository blogRepository;
 
-    public Article save(AddArticleRequest request){
-        return blogRepository.save(request.toEntity());
+    public Article save(AddArticleRequest request, String userName) {
+        return blogRepository.save(request.toEntity(userName));
         //AddArticleRequest 에 저장된 값들을 article 데이터베이스에 저
     }
 
-    public List<Article> findAll(){
+
+    @Cacheable(value = "article") // 데이터를 가져와서 캐쉬에 key값으로 저장해줌
+    public List<Article> findAll() {
         return blogRepository.findAll();
     }
-    public Article findById(long id){
+
+    public Article findById(long id) {
         return blogRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Not Found : " + id));
+                .orElseThrow(ArticleNotFoundException::new);
     }
 
-    public void delete(long id){
-        blogRepository.deleteById(id);
     public void delete(long id) {
         Article article = blogRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("not found : " +
@@ -38,13 +44,12 @@ public class BlogService {
         blogRepository.delete(article);
     }
 
-    @Transactional // 트랜잭션 메서드 엔티티의 필드값이 바뀌면 중간에 에러가 발생해도 제대로 된 값 수정을 보장
-    public Article update(long id, UpdateArticleRequest request){
+    @Transactional
+    public Article update(long id, UpdateArticleRequest request) {
         Article article = blogRepository.findById(id)
-                .orElseThrow(()-> new IllegalArgumentException("Not Fount : " + id));
-
+                .orElseThrow(() -> new IllegalArgumentException("not found : " + id));
+        authorizeArticleAuthor(article);
         article.update(request.getTitle(), request.getContent());
-
         return article;
     }
 
@@ -56,4 +61,5 @@ public class BlogService {
             throw new IllegalArgumentException("not authorized");
         }
     }
+
 }
