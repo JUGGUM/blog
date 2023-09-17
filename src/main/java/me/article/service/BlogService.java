@@ -8,6 +8,7 @@ import me.article.dto.UpdateArticleRequest;
 import me.article.repository.BlogRepository;
 import me.utils.error.exception.ArticleNotFoundException;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -20,12 +21,12 @@ import java.util.List;
 public class BlogService {
 
     private final BlogRepository blogRepository;
+    private final StringRedisTemplate stringRedisTemplate;
 
     public Article save(AddArticleRequest request, String userName) {
         return blogRepository.save(request.toEntity(userName));
         //AddArticleRequest 에 저장된 값들을 article 데이터베이스에 저
     }
-
 
     @Cacheable(value = "article") // 데이터를 가져와서 캐쉬에 key값으로 저장해줌
     public List<Article> findAll() {
@@ -60,6 +61,15 @@ public class BlogService {
         if (!article.getAuthor().equals(userName)) {
             throw new IllegalArgumentException("not authorized");
         }
+    }
+    //redis에 문자열저장
+    public void saveString(String key, String value) {
+        stringRedisTemplate.opsForValue().set(key, value);
+    }
+
+    //redis에서 문자열 얻기
+    public String getString(String key) {
+        return stringRedisTemplate.opsForValue().get(key);
     }
 
 }
