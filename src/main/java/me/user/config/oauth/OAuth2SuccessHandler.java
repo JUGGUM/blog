@@ -11,7 +11,7 @@ import me.config.jwt.TokenProvider;
 import me.config.jwt.repository.RefreshTokenRepository;
 import me.user.domain.User;
 import me.user.service.UserService;
-import me.utils.CookieUtil;
+import me.utils.cookie.CookieUtil;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
