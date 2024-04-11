@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd2cb57e-0e55-48c7-ae8b-f44ca8e19af0" name="변경" comment="Update:create_at, updated_at 테스트를 위한 EnableJpaAuditing 추가">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -227,6 +225,10 @@
       <workItem from="1694757148970" duration="1410000" />
       <workItem from="1695462115250" duration="747000" />
       <workItem from="1696817346408" duration="300000" />
+      <workItem from="1698909234293" duration="768000" />
+      <workItem from="1699774091849" duration="5000" />
+      <workItem from="1707731317898" duration="30000" />
+      <workItem from="1710037507621" duration="31000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1688706654585</created>
